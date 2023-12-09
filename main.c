@@ -5,12 +5,12 @@
 int run_shell()
 {
 char line[MAX_LINE];
- char *argv[MAX_ARGS];
- while (1)
-   {
-     print_prompt();
-     read_command(line);
-   }
+char *argv[MAX_ARGS];
+while (1)
+{
+display_prompt();
+read_command(line);
+}
 }
 
 /**
@@ -19,5 +19,5 @@ char line[MAX_LINE];
 */
 int main()
 {
-  return run_shell();
+return run_shell();
 }
