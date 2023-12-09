@@ -10,6 +10,15 @@ while (1)
 {
 display_prompt();
 read_command(line);
+if (!parse_command(line, argv))
+{
+continue;
+}
+if (strcmp(argv[0], "exit") == 0)
+{
+return 0;
+}
+execute_command(argv);
 }
 }
 
