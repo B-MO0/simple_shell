@@ -5,7 +5,7 @@
 */
 void read_command(char *line)
 {
-if (!gets(line, MAXLINE, stdin))
+if (!fgets(line, MAX_LINE, stdin))
 {
 exit(EXIT_SUCCESS);
 }

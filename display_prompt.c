@@ -5,6 +5,6 @@
 */
 void display_prompt()
 {
-printf("$YOUR-COMMAND-GOES-HERE");
+printf("$YOUR-COMMAND-GOES-HERE : ");
 fflush(stdout);
 }
