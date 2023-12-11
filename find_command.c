@@ -9,7 +9,7 @@
 char *find_command_in_path(char *cmd)
 {
 char *path = getenv("PATH");
-char *path_copy = strdup(path); // Duplicate PATH to avoid strtok modifying it
+char *path_copy = strdup(path);
 if (!path_copy)
 {
 perror("strdup");
@@ -31,7 +31,7 @@ snprintf(full_path, MAX_LINE, "%s/%s", dir, cmd);
 if (access(full_path, X_OK) == 0)
 {
 free(path_copy);
-return full_path; // Found the command
+return full_path;
 }
 dir = strtok(NULL, ":");
 }
