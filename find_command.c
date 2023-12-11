@@ -6,7 +6,7 @@
 *
 * Return: Path to the command if found, if not NULL.
 */
-char *find_command_in_path(char *cmd)
+char *find_command(char *cmd)
 {
 char *path = getenv("PATH");
 char *path_copy = strdup(path);

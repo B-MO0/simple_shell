@@ -6,6 +6,17 @@
 */
 void execute_command(char **argv)
 {
+char *cmd_path = NULL;
+if (strchr(argv[0], '/') == NULL)
+{
+cmd_path = find_command(argv[0]);
+if (!cmd_path)
+{
+fprintf(stderr, "%s: command is not found\n", argv[0]);
+return;
+}
+argv[0] = cmd_path;
+}
 pid_t pid;
 int status;
 
@@ -25,9 +36,12 @@ exit(EXIT_FAILURE);
 }
 else
 {
-do
-{
+do {
 waitpid(pid, &status, WUNTRACED);
 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+}
+if (cmd_path)
+{
+free(cmd_path);
 }
 }
