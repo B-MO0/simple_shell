@@ -23,5 +23,6 @@ int parse_command(char* line, char** argv);
 void execute_command(char** argv);
 int run_shell();
 char *find_command(char *cmd);
+void print_env(void);
 
 #endif 
