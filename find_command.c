@@ -13,7 +13,7 @@ char *path_copy = strdup(path);
 if (!path_copy)
 {
 perror("strdup");
-return NULL;
+return (NULL);
 }
 
 char *full_path = malloc(MAX_LINE);
@@ -21,7 +21,7 @@ if (!full_path)
 {
 perror("malloc");
 free(path_copy);
-return NULL;
+return (NULL);
 }
 
 char *dir = strtok(path_copy, ":");
@@ -31,12 +31,12 @@ snprintf(full_path, MAX_LINE, "%s/%s", dir, cmd);
 if (access(full_path, X_OK) == 0)
 {
 free(path_copy);
-return full_path;
+return (full_path);
 }
 dir = strtok(NULL, ":");
 }
 
 free(path_copy);
 free(full_path);
-return NULL; // Command not found
+return (NULL);
 }

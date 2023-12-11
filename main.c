@@ -2,7 +2,7 @@
 /**
 * run_shell - shell infinite loop.
 */
-int run_shell()
+int run_shell(void)
 {
 char line[MAX_LINE];
 char *argv[MAX_ARGS];
@@ -16,7 +16,7 @@ continue;
 }
 if (strcmp(argv[0], "exit") == 0)
 {
-return 0;
+return (0);
 }
 if (strcmp(argv[0], "env") == 0)
 {
@@ -31,7 +31,7 @@ execute_command(argv);
 * main - run the shell
 * Return: status
 */
-int main()
+int main(void)
 {
-return run_shell();
+return (run_shell());
 }
