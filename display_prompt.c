@@ -5,6 +5,6 @@
 */
 void display_prompt(void)
 {
-const char *prompt = "YOUR_COMMAND$ ";
+const char *prompt = "#cisfun$ ";
 write(STDOUT_FILENO, prompt, strlen(prompt));
 }
