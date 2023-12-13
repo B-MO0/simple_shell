@@ -5,6 +5,6 @@
 */
 void display_prompt(void)
 {
-printf("YOUR_COMMAND$");
-fflush(stdout);
+const char *prompt = "YOUR_COMMAND$ ";
+write(STDOUT_FILENO, prompt, strlen(prompt));
 }
