@@ -9,14 +9,18 @@
 char *find_command(char *cmd)
 {
 char *path = getenv("PATH");
-char *path_copy = strdup(path);
+char *path_copy = malloc(strlen(path) + 1);
+char *full_path;
+char *dir;
+
 if (!path_copy)
 {
-perror("strdup");
+perror("malloc");
 return (NULL);
 }
+strcpy(path_copy, path);
 
-char *full_path = malloc(MAX_LINE);
+full_path = malloc(MAX_LINE);
 if (!full_path)
 {
 perror("malloc");
@@ -24,7 +28,7 @@ free(path_copy);
 return (NULL);
 }
 
-char *dir = strtok(path_copy, ":");
+dir = strtok(path_copy, ":");
 while (dir != NULL)
 {
 snprintf(full_path, MAX_LINE, "%s/%s", dir, cmd);

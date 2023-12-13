@@ -5,6 +5,6 @@
 */
 void display_prompt(void)
 {
-printf("$");
+printf("YOUR_COMMAND$");
 fflush(stdout);
 }

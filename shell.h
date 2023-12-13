@@ -18,7 +18,7 @@
 
 /*Prototypes*/
 void display_prompt(void);
-void read_command(char* line);
+void read_command(char **line);
 int parse_command(char* line, char** argv);
 void execute_command(char** argv);
 int run_shell(void);

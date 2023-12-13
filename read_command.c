@@ -3,15 +3,20 @@
 * read_command - It reads the command written in standard input.
 * @line: address of line storage
 */
-void read_command(char *line)
+
+void read_command(char **line)
 {
-if (!fgets(line, MAX_LINE, stdin))
+size_t len = 0;
+ssize_t nread;
+
+nread = getline(line, &len, stdin);
+if (nread == -1)
 {
+free(*line);
 exit(EXIT_SUCCESS);
 }
-size_t length = strlen(line);
-if (line[length - 1] == '\n')
+if ((*line)[nread - 1] == '\n')
 {
-line[length - 1] = '\0';
+(*line)[nread - 1] = '\0';
 }
 }
