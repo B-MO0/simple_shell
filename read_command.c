@@ -7,7 +7,6 @@
 void read_command(char **line)
 {
 size_t len = 0;
-ssize_t nread;
 
 nread = getline(line, &len, stdin);
 if (nread == -1)
