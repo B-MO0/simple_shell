@@ -20,10 +20,9 @@ extern char **environ;
 /*Prototypes*/
 void display_prompt(void);
 void read_command(char **line);
-int parse_command(char* line, char** argv);
+int parse_command(char *line, char **argv);
 void execute_command(char** argv);
 int run_shell(void);
 char *find_command(char *cmd);
 void print_env(void);
-void cleanup();
 #endif 
