@@ -6,6 +6,8 @@
 */
 void execute_command(char **argv)
 {
+pid_t pid;
+int status;
 char *cmd_path = NULL;
 if (strchr(argv[0], '/') == NULL)
 {
@@ -17,9 +19,6 @@ return;
 }
 argv[0] = cmd_path;
 }
-pid_t pid;
-int status;
-
 pid = fork();
 if (pid < 0)
 {

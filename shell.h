@@ -24,5 +24,5 @@ void execute_command(char** argv);
 int run_shell(void);
 char *find_command(char *cmd);
 void print_env(void);
-
+void cleanup();
 #endif 

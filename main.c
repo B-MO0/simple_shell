@@ -45,6 +45,6 @@ line = NULL;
 * Return: status
 */
 int main(void)
-{
+{  
 return (run_shell());
 }
