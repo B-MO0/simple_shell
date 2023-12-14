@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
-* find_command_in_path - Searches for the command in the directories.
+* find_command - Searches for the command in the directories.
 * @cmd: command.
 *
 * Return: Path to the command if found, if not NULL.

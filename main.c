@@ -2,6 +2,7 @@
 
 /**
 * run_shell - shell infinite loop.
+* Return: status
 */
 int run_shell(void)
 {
@@ -45,6 +46,6 @@ line = NULL;
 * Return: status
 */
 int main(void)
-{  
+{
 return (run_shell());
 }
