@@ -7,7 +7,6 @@ int run_shell(void)
 {
 char *line = NULL;
 char *argv[MAX_ARGS];
-ssize_t read;
 
 while (1)
 {
