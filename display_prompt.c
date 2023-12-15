@@ -7,7 +7,7 @@
 
 void display_prompt(void)
 {
-const char prompt[] = "YOUR_COMMAND$ ";
+const char prompt[] = "$ ";
 int length = 0;
 while
 (prompt[length] != '\0') length++;
