@@ -1,13 +1,11 @@
 #include "shell.h"
 
-/* i use extern because the environ variable is stored in sys std libraries*/
-
 /**
 * print_env - Prints all the environment variables.
+* @env: the environment.
 */
 void print_env(void)
 {
-
 int i = 0;
 while (environ[i])
 {

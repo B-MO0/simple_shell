@@ -6,13 +6,19 @@
 *
 * Return: Path to the command if found, if not NULL.
 */
+#include "shell.h"
+
 char *find_command(char *cmd)
 {
 char *path = getenv("PATH");
-char *path_copy = malloc(strlen(path) + 1);
-char *full_path;
-char *dir;
+char *path_copy, *full_path, *dir;
 
+if (!path)
+{
+return (NULL);
+}
+
+path_copy = malloc(strlen(path) + 1);
 if (!path_copy)
 {
 perror("malloc");
