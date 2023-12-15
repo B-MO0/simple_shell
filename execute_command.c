@@ -9,15 +9,13 @@ void execute_command(char **argv)
 pid_t pid;
 int status;
 char *cmd_path = NULL;
-char *msg = ": command not found\n";
 
 if (strchr(argv[0], '/') == NULL)
 {
 cmd_path = find_command(argv[0]);
 if (!cmd_path)
 {
-write(STDERR_FILENO, argv[0], strlen(argv[0]));
-write(STDERR_FILENO, msg, strlen(msg));
+fprintf(stderr, "%s: command not found\n", argv[0]);
 return;
 }
 argv[0] = cmd_path;
