@@ -15,33 +15,38 @@ if (strchr(argv[0], '/') == NULL)
 cmd_path = find_command(argv[0]);
 if (!cmd_path)
 {
-fprintf(stderr, "%s: command not found\n", argv[0]);
+
+fprintf(stderr, "%s: %s: command not found\n", argv[0], argv[0]);
 return;
 }
 argv[0] = cmd_path;
 }
 
 pid = fork();
-if (pid == -1)
+if (pid < 0)
 {
 perror("fork failed");
-free(cmd_path);
 exit(EXIT_FAILURE);
 }
 else if (pid == 0)
 {
-if (execve(argv[0], argv, environ) == -1)
+
+if (execve(argv[0], argv, NULL) == -1)
 {
-perror("execve failed");
+
+perror(argv[0]);
 exit(EXIT_FAILURE);
 }
 }
 else
 {
-do
-{
+do {
 waitpid(pid, &status, WUNTRACED);
 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
 }
+
+if (cmd_path)
+{
 free(cmd_path);
+}
 }
