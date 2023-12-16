@@ -41,11 +41,19 @@ line = NULL;
 }
 }
 
-/**
-* main - run the shell
-* Return: status
-*/
+void signal_handler(int signo) {
+if (signo == SIGINT) {
+cleanup();
+write(STDOUT_FILENO, "\n", 1);
+exit(EXIT_SUCCESS);
+}
+}
+
 int main(void)
 {
-return (run_shell());
+if (signal(SIGINT, signal_handler) == SIG_ERR) {
+write(STDERR_FILENO, "Cannot catch SIGINT\n", 19);
+}
+
+return run_shell();
 }

@@ -4,49 +4,35 @@
 * execute_command - Executes a command.
 * @argv: array of arguments.
 */
-void execute_command(char **argv)
-{
+
+void execute_command(char **argv) {
 pid_t pid;
 int status;
-char *cmd_path = NULL;
+char *cmd_path = find_command(argv[0]);
 
-if (strchr(argv[0], '/') == NULL)
-{
-cmd_path = find_command(argv[0]);
-if (!cmd_path)
-{
-
-fprintf(stderr, "%s: %s: command not found\n", argv[0], argv[0]);
+if (cmd_path == NULL) {
+fprintf(stderr, "%s: command not found\n", argv[0]);
 return;
-}
-argv[0] = cmd_path;
 }
 
 pid = fork();
-if (pid < 0)
-{
-perror("fork failed");
-exit(EXIT_FAILURE);
-}
-else if (pid == 0)
-{
+if (pid == 0) {
 
-if (execve(argv[0], argv, NULL) == -1)
-{
-
-perror(argv[0]);
+execve(cmd_path, argv, environ);
+perror("execve");
 exit(EXIT_FAILURE);
-}
-}
-else
-{
+} else if (pid > 0) {
+
 do {
 waitpid(pid, &status, WUNTRACED);
 } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+} else {
+perror("fork");
+cleanup();
+exit(EXIT_FAILURE);
 }
 
-if (cmd_path)
-{
 free(cmd_path);
 }
-}
+
+
